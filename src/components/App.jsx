@@ -2,42 +2,63 @@ import { useState, useEffect } from 'react';
 import { Searchbar } from 'components/Searchbar';
 import { ImageGallery } from 'components/ImageGallery';
 import { searchMovies } from 'components/services/api';
+import { getTrending } from 'components/services/api';
 
 export const App = () => {
   const [images, setImages] = useState([]);
   const [input, setInput] = useState('');
   useEffect(() => {
-    if (!input) return;
-
-    const getHttp = async input => {
+    const searchMoviesHttp = async input => {
       try {
-        const response = await searchMovies(input).then(
-          responseHttp => {
-            return responseHttp.data.results
-          }
-        );
+        const response = await searchMovies(input).then(responseHttp => {
+          return responseHttp.data.results;
+        });
+        setImages([]);
         setImages([...response]);
       } catch (error) {
         console.error(error);
       }
     };
-    getHttp(input);
+    const getTrendingHttp = async () => {
+      try {
+        const response = await getTrending().then(responseHttp => {
+          return responseHttp.data.results;
+        });
+        setImages([]);
+        setImages([...response]);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    if (input) {
+      searchMoviesHttp(input);
+    }
+    if (!input) {
+      getTrendingHttp();
+    }
   }, [input]);
 
-  const handleSubmit = input => {
+  const onSubmit = input => {
     setInput(input);
   };
 
   return (
     <>
-      <Searchbar onSubmit={handleSubmit} />
+      <Searchbar
+        {...{
+          onSubmit,
+          input,
+          setInput,
+        }}
+      />
       {
         <ImageGallery
           {...{
-            images: images,
+            images,
           }}
         />
       }
+        
     </>
   );
 };

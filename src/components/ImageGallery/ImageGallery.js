@@ -11,7 +11,12 @@ export const ImageGallery = ({
       {images.length > 0 &&
         images.map(({ id, title, poster_path }) => {
           return (
-            <ImageGalleryItem key={id.toString()} src={poster_path} alt={title}>
+            // https://image.tmdb.org/t/p/w500${el.poster_path}
+            <ImageGalleryItem
+              key={id.toString()}
+              src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+              alt={title}
+            >
               {children}
             </ImageGalleryItem>
           );
