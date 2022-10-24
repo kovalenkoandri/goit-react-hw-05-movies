@@ -51,13 +51,13 @@ export const App = () => {
           setInput,
         }}
       />
-      {
+    
         <ImageGallery
           {...{
             images,
           }}
         />
-      }
+      
         
     </>
   );

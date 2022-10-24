@@ -1,20 +1,22 @@
 import PropTypes from 'prop-types';
 import cssItem from './ImageGalleryItem.module.css';
-export const ImageGalleryItem = ({
-  src,
-  alt,
-}) => {
+import { Routes, Route, Link } from 'react-router-dom';
+import { About } from './About';
+export const ImageGalleryItem = ({ src, alt, poster_path, id }) => {
   return (
     <>
-      <li
-        className={cssItem.ImageGalleryItem}
-      >
-        <img
-          src={src}
-          alt={alt}
-          className={cssItem['ImageGalleryItem-image']}
-        />
-      </li>
+      <Link to={poster_path}>
+        <li className={cssItem.ImageGalleryItem}>
+          <img
+            src={src}
+            alt={alt}
+            className={cssItem['ImageGalleryItem-image']}
+          />
+        </li>
+      </Link>
+      <Routes>
+        <Route path={poster_path} element={<About id={id} />} />
+      </Routes>
     </>
   );
 };

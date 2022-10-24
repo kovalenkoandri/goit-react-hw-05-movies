@@ -4,21 +4,20 @@ import css from './ImageGallery.module.css';
 
 export const ImageGallery = ({
   images,
-  children,
 }) => (
   <>
     <ul className={css.ImageGallery}>
       {images.length > 0 &&
-        images.map(({ id, title, poster_path }) => {
+        images.map(({ id, title, name, poster_path }) => {
           return (
             // https://image.tmdb.org/t/p/w500${el.poster_path}
             <ImageGalleryItem
-              key={id.toString()}
+              key={id}
               src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-              alt={title}
-            >
-              {children}
-            </ImageGalleryItem>
+              alt={title || name}
+              poster_path={poster_path}
+              id={id}
+            />
           );
         })}
     </ul>
