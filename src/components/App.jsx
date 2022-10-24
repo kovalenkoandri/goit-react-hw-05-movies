@@ -3,6 +3,9 @@ import { Searchbar } from 'components/Searchbar';
 import { ImageGallery } from 'components/ImageGallery';
 import { searchMovies } from 'components/services/api';
 import { getTrending } from 'components/services/api';
+import { Route, Routes } from 'react-router-dom';
+import { NotFound } from 'pages/NotFound';
+import { Container, Header, Link } from './App.styled';
 
 export const App = () => {
   const [images, setImages] = useState([]);
@@ -44,21 +47,41 @@ export const App = () => {
 
   return (
     <>
-      <Searchbar
-        {...{
-          onSubmit,
-          input,
-          setInput,
-        }}
-      />
-    
-        <ImageGallery
-          {...{
-            images,
-          }}
-        />
-      
-        
+      <Container>
+        <Header>
+          <nav>
+            <Link to="/" end>
+              Home
+            </Link>
+            <Link to="/movies">Movies</Link>
+          </nav>
+        </Header>
+        <Routes>
+          <Route
+            path="/*"
+            element={
+              <ImageGallery
+                {...{
+                  images,
+                }}
+              />
+            }
+          />
+          <Route
+            path="/movies"
+            element={
+              <Searchbar
+                {...{
+                  onSubmit,
+                  input,
+                  setInput,
+                }}
+              />
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Container>
     </>
   );
 };
