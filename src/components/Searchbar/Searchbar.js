@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { ImageGallery } from 'components/ImageGallery';
 import { useState } from 'react';
-export const Searchbar = ({ onSubmit, images }) => {
+export const Searchbar = ({ onSubmit, images, appSetInput, appSetImages }) => {
   const [input, setInput] = useState('');
   const handleSubmit = event => {
     event.preventDefault();
@@ -10,11 +10,13 @@ export const Searchbar = ({ onSubmit, images }) => {
 
   const onChange = event => {
     setInput(event.target.value);
+    appSetInput('');
+    appSetImages([]);
   };
 
   return (
     <>
-      <header >
+      <header>
         <form onSubmit={handleSubmit}>
           <button type="submit">
             <span>Search</span>

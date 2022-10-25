@@ -73,8 +73,8 @@ export const App = () => {
               <Searchbar
                 {...{
                   onSubmit,
-                  input,
-                  setInput,
+                  appSetImages: setImages,
+                  appSetInput: setInput,
                   images,
                 }}
               />
