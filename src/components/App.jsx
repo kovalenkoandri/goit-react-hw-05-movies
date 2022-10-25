@@ -9,6 +9,7 @@ import { Container, Header, Link } from './App.styled';
 
 export const App = () => {
   const [images, setImages] = useState([]);
+  const [trendingImages, setTrendingImages] = useState([]);
   const [input, setInput] = useState('');
   useEffect(() => {
     const searchMoviesHttp = async input => {
@@ -27,8 +28,8 @@ export const App = () => {
         const response = await getTrending().then(responseHttp => {
           return responseHttp.data.results;
         });
-        setImages([]);
-        setImages([...response]);
+        setTrendingImages([]);
+        setTrendingImages([...response]);
       } catch (error) {
         console.error(error);
       }
@@ -36,7 +37,7 @@ export const App = () => {
     if (input) {
       searchMoviesHttp(input);
     }
-    if (!input) {
+    else {
       getTrendingHttp();
     }
   }, [input]);
@@ -62,19 +63,20 @@ export const App = () => {
             element={
               <ImageGallery
                 {...{
-                  images,
+                  trendingImages,
                 }}
               />
             }
           />
           <Route
-            path="/movies"
+            path="/movies/*"
             element={
               <Searchbar
                 {...{
                   onSubmit,
                   input,
                   setInput,
+                  images,
                 }}
               />
             }
