@@ -1,4 +1,3 @@
-import css from './Searchbar.module.css';
 import PropTypes from 'prop-types';
 import { ImageGallery } from 'components/ImageGallery';
 import { useState } from 'react';
@@ -15,15 +14,14 @@ export const Searchbar = ({ onSubmit, images }) => {
 
   return (
     <>
-      <header className={css.Searchbar}>
-        <form className={css.SearchForm} onSubmit={handleSubmit}>
-          <button type="submit" className={css['SearchForm-button']}>
+      <header >
+        <form onSubmit={handleSubmit}>
+          <button type="submit">
             <span>Search</span>
           </button>
 
           <input
             name="input"
-            className={css['SearchForm-input']}
             type="text"
             autoComplete="off"
             autoFocus

@@ -36,8 +36,7 @@ export const App = () => {
     };
     if (input) {
       searchMoviesHttp(input);
-    }
-    else {
+    } else {
       getTrendingHttp();
     }
   }, [input]);
