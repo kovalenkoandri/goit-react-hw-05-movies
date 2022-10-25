@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { ImageGallery } from 'components/ImageGallery';
 import { useState } from 'react';
+import { Input, Button } from './Searchbar.styled';
 export const Searchbar = ({ onSubmit, images, appSetInput, appSetImages }) => {
   const [input, setInput] = useState('');
   const handleSubmit = event => {
@@ -18,19 +19,18 @@ export const Searchbar = ({ onSubmit, images, appSetInput, appSetImages }) => {
     <>
       <header>
         <form onSubmit={handleSubmit}>
-          <button type="submit">
-            <span>Search</span>
-          </button>
-
-          <input
+          <Input
             name="input"
             type="text"
             autoComplete="off"
             autoFocus
-            placeholder="Search images and photos"
+            placeholder=""
             value={input}
             onChange={onChange}
           />
+          <Button type="submit">
+            <span>Search</span>
+          </Button>
         </form>
       </header>
       {input && (
