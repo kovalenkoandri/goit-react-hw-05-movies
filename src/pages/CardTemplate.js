@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from 'components/services/api';
+const NO_POSTER = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcjBqfRNytcTv3gLsDnnoDKhEyqSS9D-TVsA&usqp=CAU`;
 const CardTemplate = () => {
   const [details, setDetails] = useState({});
   const { id } = useParams();
@@ -19,11 +20,14 @@ const CardTemplate = () => {
   }, [id]);
   console.log(details);
   const { poster_path, title } = details;
+  const poster = poster_path
+    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+    : NO_POSTER;
   return (
     <main>
       <p>{title}</p>
       <p>{id}</p>
-      <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} />
+      <img src={poster} alt={title} />
     </main>
   );
 };
