@@ -7,11 +7,12 @@ export const ImageGallery = ({ images, trendingImages }) => {
     <>
       <ul>
         {renderImages.length > 0 &&
-          renderImages.map(({ id, title, name, poster_path }) => {
+          renderImages.map(({ id, title, name}) => {
             return (
               <ImageGalleryItem
                 key={id}
                 alt={title || name}
+                id={id}
               />
             );
           })}

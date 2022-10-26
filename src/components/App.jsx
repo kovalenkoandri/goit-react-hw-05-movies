@@ -3,9 +3,10 @@ import { Searchbar } from 'components/Searchbar';
 import { ImageGallery } from 'components/ImageGallery';
 import { searchMovies } from 'components/services/api';
 import { getTrending } from 'components/services/api';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import { NotFound } from 'pages/NotFound';
 import { Container, Header, Link } from './App.styled';
+import CardTemplate from 'pages/CardTemplate';
 
 export const App = () => {
   const [images, setImages] = useState([]);
@@ -80,6 +81,7 @@ export const App = () => {
               />
             }
           />
+          <Route path="/movies/:id" element={<CardTemplate />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>

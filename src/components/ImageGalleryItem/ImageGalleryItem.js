@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
-
-export const ImageGalleryItem = ({  alt }) => {
+import { Link } from 'react-router-dom';
+export const ImageGalleryItem = ({ alt, id }) => {
   return (
     <>
-      <li>{alt}</li>
+      <li>
+        <Link to={`/movies/${id}`}>{alt}</Link>
+      </li>
     </>
   );
 };
