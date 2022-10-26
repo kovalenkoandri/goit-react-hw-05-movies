@@ -19,15 +19,23 @@ const CardTemplate = () => {
     getMovieDetailsHttp(id);
   }, [id]);
   console.log(details);
-  const { poster_path, title } = details;
+  const { poster_path, title, popularity, overview, genres } = details;
   const poster = poster_path
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
     : NO_POSTER;
+    const userTitle = () => (title ? title : 'no title');
+  const userScore = () =>
+    Math.round(popularity) ? `${Math.round(popularity)}%` : 'no score';
+  const userOverview = () => (overview ? overview : 'no overview');
+  const userGenres = () =>
+    genres ? genres.reduce((ac, { name }) => (ac += `${name} `), '') : 'no genres';
   return (
     <main>
-      <p>{title}</p>
-      <p>{id}</p>
       <img src={poster} alt={title} />
+      <p>{userTitle()}</p>
+      <p>User score: {userScore()}</p>
+      <p>Overview: {userOverview()}</p>
+      <p>Genres: {userGenres()}</p>
     </main>
   );
 };
