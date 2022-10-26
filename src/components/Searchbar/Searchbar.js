@@ -11,8 +11,8 @@ export const Searchbar = ({ onSubmit, images, appSetInput, appSetImages }) => {
 
   const onChange = event => {
     setInput(event.target.value);
-    appSetInput('');
-    appSetImages([]);
+    appSetInput(''); // clear old search rendered response
+    appSetImages([]); 
   };
 
   return (
@@ -45,4 +45,7 @@ export const Searchbar = ({ onSubmit, images, appSetInput, appSetImages }) => {
 };
 Searchbar.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  appSetInput: PropTypes.func.isRequired,
+  appSetImages: PropTypes.func.isRequired,
+  images: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
