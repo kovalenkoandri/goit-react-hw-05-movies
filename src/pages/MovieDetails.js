@@ -4,7 +4,7 @@ import { getMovieDetails } from 'components/services/api';
 const NO_POSTER = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcjBqfRNytcTv3gLsDnnoDKhEyqSS9D-TVsA&usqp=CAU`;
 const MovieDetails = () => {
   const [details, setDetails] = useState({});
-  const { id } = useParams();
+  const { movieId } = useParams();
   useEffect(() => {
     const getMovieDetailsHttp = async input => {
       try {
@@ -16,8 +16,8 @@ const MovieDetails = () => {
         console.error(error);
       }
     };
-    getMovieDetailsHttp(id);
-  }, [id]);
+    getMovieDetailsHttp(movieId);
+  }, [movieId]);
   console.log(details);
   const { poster_path, title, popularity, overview, genres } = details;
   const poster = poster_path
