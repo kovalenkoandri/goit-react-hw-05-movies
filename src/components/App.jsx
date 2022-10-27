@@ -3,10 +3,10 @@ import { Movies } from 'pages/Movies';
 import { Home } from 'pages/Home';
 import { searchMovies } from 'components/services/api';
 import { getTrending } from 'components/services/api';
-import { Route, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { NotFound } from 'pages/NotFound';
 import { Container, Header, Link } from './App.styled';
-import MovieDetails from 'pages/MovieDetails';
+import { MovieDetails } from 'pages/MovieDetails';
 
 export const App = () => {
   const [images, setImages] = useState([]);

@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from 'components/services/api';
 const NO_POSTER = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcjBqfRNytcTv3gLsDnnoDKhEyqSS9D-TVsA&usqp=CAU`;
-const MovieDetails = () => {
+export const MovieDetails = () => {
   const [details, setDetails] = useState({});
   const { movieId } = useParams();
   useEffect(() => {
@@ -41,4 +41,3 @@ const MovieDetails = () => {
     </main>
   );
 };
-export default MovieDetails;
