@@ -2,7 +2,7 @@ import styled from 'styled-components';
 export const CardTemplate = styled.div`
   display: flex;
   padding: 10px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid grey;
 `;
 export const Img = styled.img`
   width: 250px;
@@ -22,6 +22,19 @@ export const H3 = styled.h3`
   }
 `;
 export const H4 = styled.h4`
+  }
+`;
+export const UlAdditional = styled.ul`
+padding: 20px;
+border-bottom: 1px solid grey;
+  }
+`;
+export const LiAdditional = styled.li`
+ &:first-child {
+    margin-top: 20px;
+  }
+ &:not(:last-child) {
+    margin-bottom: 10px;
   }
 `;
 
