@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { ImageGallery } from 'components/ImageGallery';
 import { useState } from 'react';
-import { Input, Button } from './Searchbar.styled';
-export const Searchbar = ({ onSubmit, images, appSetInput, appSetImages }) => {
+import { Input, Button } from './Movies.styled';
+export const Movies = ({ onSubmit, images, appSetInput, appSetImages }) => {
   const [input, setInput] = useState('');
   const handleSubmit = event => {
     event.preventDefault();
@@ -12,7 +12,7 @@ export const Searchbar = ({ onSubmit, images, appSetInput, appSetImages }) => {
   const onChange = event => {
     setInput(event.target.value);
     appSetInput(''); // clear old search rendered response
-    appSetImages([]); 
+    appSetImages([]);
   };
 
   return (
@@ -43,7 +43,7 @@ export const Searchbar = ({ onSubmit, images, appSetInput, appSetImages }) => {
     </>
   );
 };
-Searchbar.propTypes = {
+Movies.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   appSetInput: PropTypes.func.isRequired,
   appSetImages: PropTypes.func.isRequired,

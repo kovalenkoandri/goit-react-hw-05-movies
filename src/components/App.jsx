@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Searchbar } from 'components/Searchbar';
+import { Movies } from 'components/Movies';
 import { ImageGallery } from 'components/ImageGallery';
 import { searchMovies } from 'components/services/api';
 import { getTrending } from 'components/services/api';
@@ -71,7 +71,7 @@ export const App = () => {
           <Route
             path="/movies/*"
             element={
-              <Searchbar
+              <Movies
                 {...{
                   onSubmit,
                   appSetImages: setImages,
