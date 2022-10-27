@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ImageGalleryItem } from 'components/ImageGalleryItem';
+import { Link } from 'react-router-dom';
 
 export const Home = ({ images, trendingImages }) => {
   const renderImages = images || trendingImages || [];
@@ -8,7 +8,13 @@ export const Home = ({ images, trendingImages }) => {
       <ul>
         {renderImages.length > 0 &&
           renderImages.map(({ id, title, name }) => {
-            return <ImageGalleryItem key={id} alt={title || name} id={id} />;
+            return (
+              <>
+                <li key={id}>
+                  <Link to={`/movies/${id}`}>{title || name}</Link>
+                </li>
+              </>
+            );
           })}
       </ul>
     </>
