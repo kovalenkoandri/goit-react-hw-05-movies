@@ -6,7 +6,7 @@ import { getTrending } from 'components/services/api';
 import { Route, Routes} from 'react-router-dom';
 import { NotFound } from 'pages/NotFound';
 import { Container, Header, Link } from './App.styled';
-import CardTemplate from 'pages/CardTemplate';
+import MovieDetails from 'pages/MovieDetails';
 
 export const App = () => {
   const [images, setImages] = useState([]);
@@ -81,7 +81,7 @@ export const App = () => {
               />
             }
           />
-          <Route path="/movies/:id" element={<CardTemplate />} />
+          <Route path="/movies/:id" element={<MovieDetails />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>
