@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Movies } from 'components/Movies';
+import { Movies } from 'pages/Movies';
 import { Home } from 'pages/Home';
 import { searchMovies } from 'components/services/api';
 import { getTrending } from 'components/services/api';
