@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from 'components/services/api';
+import { Link, Outlet } from 'react-router-dom';
 import {
   CardTemplate,
   Img,
@@ -65,9 +66,14 @@ export const MovieDetails = () => {
       </CardTemplate>
       <UlAdditional>
         Additional information
-        <LiAdditional></LiAdditional>
-        <LiAdditional></LiAdditional>
+        <LiAdditional>
+          <Link to="cast">Cast</Link>
+        </LiAdditional>
+        <LiAdditional>
+          <Link to="reviews">Reviews</Link>
+        </LiAdditional>
       </UlAdditional>
+      <Outlet/>
     </>
   );
 };

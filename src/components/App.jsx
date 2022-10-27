@@ -3,6 +3,8 @@ import { Movies } from 'pages/Movies';
 import { Home } from 'pages/Home';
 import { searchMovies } from 'components/services/api';
 import { getTrending } from 'components/services/api';
+import { Cast } from 'components/Cast';
+import { Reviews } from 'components/Reviews';
 import { Route, Routes } from 'react-router-dom';
 import { NotFound } from 'pages/NotFound';
 import { Container, Header, Link } from './App.styled';
@@ -81,7 +83,10 @@ export const App = () => {
               />
             }
           />
-          <Route path="/movies/:movieId" element={<MovieDetails />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
+            <Route path="/movies/:movieId/cast" element={<Cast />} />
+            <Route path="/movies/:movieId/reviews" element={<Reviews />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>
