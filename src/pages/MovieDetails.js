@@ -30,7 +30,6 @@ export const MovieDetails = () => {
     };
     getMovieDetailsHttp(movieId);
   }, [movieId]);
-  console.log(details);
   const { poster_path, title, popularity, overview, genres } = details;
   const poster = poster_path
     ? `https://image.tmdb.org/t/p/w500${poster_path}`
