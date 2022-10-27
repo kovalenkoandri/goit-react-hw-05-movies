@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from 'components/services/api';
+import { CardTemplate, Img, Ul, Li, H2, H3, H4 } from './MovieDetails.styled';
 const NO_POSTER = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcjBqfRNytcTv3gLsDnnoDKhEyqSS9D-TVsA&usqp=CAU`;
 export const MovieDetails = () => {
   const [details, setDetails] = useState({});
@@ -32,12 +33,24 @@ export const MovieDetails = () => {
       ? genres.reduce((ac, { name }) => (ac += `${name} `), '')
       : 'no genres';
   return (
-    <main>
-      <img src={poster} alt={title} />
-      <p>{userTitle()}</p>
-      <p>User score: {userScore()}</p>
-      <p>Overview: {userOverview()}</p>
-      <p>Genres: {userGenres()}</p>
-    </main>
+    <CardTemplate>
+      <Img src={poster} alt={title} />
+      <Ul>
+        <Li>
+          <H2>{userTitle()}</H2>
+        </Li>
+        <Li>
+          <p>User score: {userScore()}</p>
+        </Li>
+        <Li>
+          <H3>Overview</H3>
+          <p>{userOverview()}</p>
+        </Li>
+        <Li>
+         <H4>Genres</H4>
+          <p>{userGenres()}</p>
+        </Li>
+      </Ul>
+    </CardTemplate>
   );
 };
