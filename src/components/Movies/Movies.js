@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ImageGallery } from 'components/ImageGallery';
+import { Home } from 'pages/Home';
 import { useState } from 'react';
 import { Input, Button } from './Movies.styled';
 export const Movies = ({ onSubmit, images, appSetInput, appSetImages }) => {
@@ -34,7 +34,7 @@ export const Movies = ({ onSubmit, images, appSetInput, appSetImages }) => {
         </form>
       </header>
       {input && (
-        <ImageGallery
+        <Home
           {...{
             images,
           }}

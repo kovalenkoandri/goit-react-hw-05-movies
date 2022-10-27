@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Movies } from 'components/Movies';
-import { ImageGallery } from 'components/ImageGallery';
+import { Home } from 'pages/Home';
 import { searchMovies } from 'components/services/api';
 import { getTrending } from 'components/services/api';
 import { Route, Routes} from 'react-router-dom';
@@ -61,7 +61,7 @@ export const App = () => {
           <Route
             path="/*"
             element={
-              <ImageGallery
+              <Home
                 {...{
                   trendingImages,
                 }}
