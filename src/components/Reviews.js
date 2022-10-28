@@ -1,6 +1,11 @@
 import { getMovieReviews } from 'components/services/api';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import {
+  ListReviews,
+  ItemReviews,
+  TextReviews,
+} from 'components/Reviews.styled';
 export const Reviews = () => {
   const [reviewed, setReviewed] = useState([]);
   const { movieId } = useParams();
@@ -20,17 +25,18 @@ export const Reviews = () => {
   console.log(reviewed);
   return (
     <section>
+      <ListReviews>
       {reviewed.length > 0
         ? reviewed.map(({ id, author, content }) => {
             return (
-              <li key={id}>
-                <h3>Author: {author}</h3>
+              <ItemReviews key={id}>
+                <TextReviews>Author: {author}</TextReviews>
                 <p>{content}</p>
-              </li>
+              </ItemReviews>
             );
           })
         : 'no reviews found'}
-      
+      </ListReviews>
     </section>
   );
 };
