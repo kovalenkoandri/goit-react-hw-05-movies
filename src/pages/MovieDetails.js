@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from 'components/services/api';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import {
   CardTemplate,
   Img,
@@ -42,8 +42,10 @@ const MovieDetails = () => {
     genres
       ? genres.reduce((ac, { name }) => (ac += `${name} `), '')
       : 'no genres';
+  const location = useLocation();
   return (
     <>
+      <Link to={location.state?.from.pathname || '/'}>go Back</Link>;
       <CardTemplate>
         <Img src={poster} alt={title} />
         <Ul>
@@ -72,7 +74,7 @@ const MovieDetails = () => {
           <Link to="reviews">Reviews</Link>
         </LiAdditional>
       </UlAdditional>
-      <Outlet/>
+      <Outlet />
     </>
   );
 };

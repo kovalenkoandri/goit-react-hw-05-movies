@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Home = ({ images, trendingImages }) => {
   const renderImages = images || trendingImages || [];
@@ -7,15 +7,21 @@ const Home = ({ images, trendingImages }) => {
     (el,
     idx) => renderImages.indexOf(el) === idx
   );
+  const location = useLocation();
   return (
     <>
       <ul>
         {noDuplicate.length > 0 &&
           noDuplicate.map(({ id, title, name }) => {
             return (
-                <li key={id}>
-                  <Link to={`/movies/${id}`}>{title || name}</Link>
-                </li>
+              <li key={id}>
+                <Link
+                  to={`/movies/${id}`}
+                  state={{ from: location }}
+                >
+                  {title || name}
+                </Link>
+              </li>
             );
           })}
       </ul>
