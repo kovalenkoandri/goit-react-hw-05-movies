@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import { Home } from 'pages/Home';
+import Home from 'pages/Home';
 import { useState } from 'react';
 import { Input, Button } from './Movies.styled';
-export const Movies = ({ onSubmit, images, appSetInput, appSetImages }) => {
+const Movies = ({ onSubmit, images, appSetInput, appSetImages }) => {
   const [input, setInput] = useState('');
   const handleSubmit = event => {
     event.preventDefault();
@@ -43,6 +43,9 @@ export const Movies = ({ onSubmit, images, appSetInput, appSetImages }) => {
     </>
   );
 };
+
+export default Movies;
+
 Movies.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   appSetInput: PropTypes.func.isRequired,

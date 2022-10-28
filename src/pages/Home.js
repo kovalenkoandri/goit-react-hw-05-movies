@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export const Home = ({ images, trendingImages }) => {
+const Home = ({ images, trendingImages }) => {
   const renderImages = images || trendingImages || [];
   const noDuplicate = renderImages.filter(
     (el,
@@ -22,6 +22,8 @@ export const Home = ({ images, trendingImages }) => {
     </>
   );
 };
+
+export default Home;
 
 Home.propTypes = {
   images: PropTypes.arrayOf(

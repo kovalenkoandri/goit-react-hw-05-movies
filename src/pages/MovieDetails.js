@@ -14,7 +14,7 @@ import {
   LiAdditional,
 } from './MovieDetails.styled';
 const NO_POSTER = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcjBqfRNytcTv3gLsDnnoDKhEyqSS9D-TVsA&usqp=CAU`;
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [details, setDetails] = useState({});
   const { movieId } = useParams();
   useEffect(() => {
@@ -76,3 +76,5 @@ export const MovieDetails = () => {
     </>
   );
 };
+
+export default MovieDetails;

@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Movies } from 'pages/Movies';
-import { Home } from 'pages/Home';
 import { searchMovies } from 'components/services/api';
 import { getTrending } from 'components/services/api';
-import { Cast } from 'components/Cast/Cast';
-import { Reviews } from 'components/Reviews/Reviews';
 import { Route, Routes } from 'react-router-dom';
-import { NotFound } from 'pages/NotFound';
 import { Container, Header, Link } from 'components/App/App.styled';
-import { MovieDetails } from 'pages/MovieDetails';
+import { lazy, Suspense } from 'react';
+const Home = lazy(() => import('pages/Home'));
+const Movies = lazy(() => import('pages/Movies'));
+const MovieDetails = lazy(() => import('pages/MovieDetails'));
+const Cast = lazy(() => import('components/Cast/Cast'));
+const Reviews = lazy(() => import('components/Reviews/Reviews'));
+const NotFound = lazy(() => import('pages/NotFound'));
 
 export const App = () => {
   const [images, setImages] = useState([]);
@@ -51,6 +52,7 @@ export const App = () => {
   return (
     <>
       <Container>
+        <Suspense fallback={<div>Loading...</div>}>
         <Header>
           <nav>
             <Link to="/" end>
@@ -89,6 +91,7 @@ export const App = () => {
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
       </Container>
     </>
   );

@@ -6,7 +6,7 @@ import {
   ItemReviews,
   TextReviews,
 } from 'components/Reviews/Reviews.styled';
-export const Reviews = () => {
+const Reviews = () => {
   const [reviewed, setReviewed] = useState([]);
   const { movieId } = useParams();
   useEffect(() => {
@@ -40,3 +40,5 @@ export const Reviews = () => {
     </section>
   );
 };
+
+export default Reviews;
