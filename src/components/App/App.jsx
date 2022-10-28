@@ -63,7 +63,7 @@ export const App = () => {
         </Header>
         <Routes>
           <Route
-            path="/*"
+            path="/"
             element={
               <Home
                 {...{
@@ -73,7 +73,7 @@ export const App = () => {
             }
           />
           <Route
-            path="/movies/*"
+            path="/movies/"
             element={
               <Movies
                 {...{
