@@ -36,8 +36,12 @@ body {
 }
 
 img {
-  display: block;
+  display: inline-block;
   margin-right: auto;
   margin-left: auto;
   height: auto;
+}
+
+ul {
+  padding: 0;
 }

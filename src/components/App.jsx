@@ -7,7 +7,7 @@ import { Cast } from 'components/Cast';
 import { Reviews } from 'components/Reviews';
 import { Route, Routes } from 'react-router-dom';
 import { NotFound } from 'pages/NotFound';
-import { Container, Header, Link } from './App.styled';
+import { Container, Header, Link } from 'components/App.styled';
 import { MovieDetails } from 'pages/MovieDetails';
 
 export const App = () => {

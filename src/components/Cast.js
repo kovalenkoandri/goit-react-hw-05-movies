@@ -1,43 +1,42 @@
 import { getMovieCredits } from 'components/services/api';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { ImgCast, ListCast, ListItemCast, TextCast } from 'components/Cast.styled';
 export const Cast = () => {
-   const [casted, setCasted] = useState({});
-   const { movieId } = useParams();
-   useEffect(() => {
-     const getMovieCreditsHttp = async input => {
-       try {
-         const response = await getMovieCredits(input).then(responseHttp => {
-           return responseHttp.data;
-         });
-         setCasted({ ...response });
-       } catch (error) {
-         console.error(error);
-       }
-     };
-     getMovieCreditsHttp(movieId);
-   }, [movieId]);
+  const [casted, setCasted] = useState({});
+  const { movieId } = useParams();
+  useEffect(() => {
+    const getMovieCreditsHttp = async input => {
+      try {
+        const response = await getMovieCredits(input).then(responseHttp => {
+          return responseHttp.data.cast.filter((_, idx) => idx < 3);
+        });
+        setCasted([...response]);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getMovieCreditsHttp(movieId);
+  }, [movieId]);
   console.log(casted);
-     const { cast } = casted;
   return (
     <section>
-      <ul>
-        <li>
-          <b>CEO</b> - Gabrijela Vohu Manah
-        </li>
-        <li>
-          <b>Sales</b> - Darius Marianne
-        </li>
-        <li>
-          <b>Product</b> - Ségdae Jean-Pierre
-        </li>
-        <li>
-          <b>Marketing</b> - Melina Theotimos
-        </li>
-        <li>
-          <b>Engineering</b> - Gregor Ramadhani
-        </li>
-      </ul>
+      <ListCast>
+        {casted.length > 0
+          ? casted.map(({ id, profile_path, name, character }) => {
+              return (
+                <ListItemCast key={id}>
+                  <ImgCast
+                    src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+                    alt={name}
+                  />
+                  <TextCast>{name}</TextCast>
+                  <TextCast>{character}</TextCast>
+                </ListItemCast>
+              );
+            })
+          : 'no casted actors found'}
+      </ListCast>
     </section>
   );
 };
