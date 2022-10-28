@@ -45,7 +45,7 @@ const MovieDetails = () => {
   const location = useLocation();
   return (
     <>
-      <Link to={location.state?.from.pathname || '/'}>go Back</Link>;
+      <Link to={location.state?.from.pathname || '/'}>ᐸ go Back ᐸ</Link>
       <CardTemplate>
         <Img src={poster} alt={title} />
         <Ul>
