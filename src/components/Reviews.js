@@ -1,23 +1,36 @@
+import { getMovieReviews } from 'components/services/api';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 export const Reviews = () => {
+  const [reviewed, setReviewed] = useState([]);
+  const { movieId } = useParams();
+  useEffect(() => {
+    const getMovieReviewsHttp = async input => {
+      try {
+        const response = await getMovieReviews(input).then(responseHttp => {
+          return responseHttp.data.results.filter((_, idx) => idx < 3);
+        });
+        setReviewed([...response]);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getMovieReviewsHttp(movieId);
+  }, [movieId]);
+  console.log(reviewed);
   return (
     <section>
-      <div>
-        <h2>First review - 4.6/5</h2>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem harum
-          architecto sapiente corporis, voluptatem quas voluptatibus fugiat
-          nulla commodi quidem, dolorem distinctio inventore blanditiis illo
-          tenetur aut enim ex laborum!
-        </p>
-      </div>
-      <div>
-        <h2>Second review - 4.8/5</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-          nihil ea, eaque fugit amet possimus officiis asperiores aperiam facere
-          et?
-        </p>
-      </div>
+      {reviewed.length > 0
+        ? reviewed.map(({ id, author, content }) => {
+            return (
+              <li key={id}>
+                <h3>Author: {author}</h3>
+                <p>{content}</p>
+              </li>
+            );
+          })
+        : 'no reviews found'}
+      
     </section>
   );
 };

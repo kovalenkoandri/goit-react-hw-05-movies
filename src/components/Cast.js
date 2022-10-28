@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { ImgCast, ListCast, ListItemCast, TextCast } from 'components/Cast.styled';
 export const Cast = () => {
-  const [casted, setCasted] = useState({});
+  const [casted, setCasted] = useState([]);
   const { movieId } = useParams();
   useEffect(() => {
     const getMovieCreditsHttp = async input => {
@@ -18,7 +18,6 @@ export const Cast = () => {
     };
     getMovieCreditsHttp(movieId);
   }, [movieId]);
-  console.log(casted);
   return (
     <section>
       <ListCast>
