@@ -3,11 +3,11 @@ import { Movies } from 'pages/Movies';
 import { Home } from 'pages/Home';
 import { searchMovies } from 'components/services/api';
 import { getTrending } from 'components/services/api';
-import { Cast } from 'components/Cast';
-import { Reviews } from 'components/Reviews';
+import { Cast } from 'components/Cast/Cast';
+import { Reviews } from 'components/Reviews/Reviews';
 import { Route, Routes } from 'react-router-dom';
 import { NotFound } from 'pages/NotFound';
-import { Container, Header, Link } from 'components/App.styled';
+import { Container, Header, Link } from 'components/App/App.styled';
 import { MovieDetails } from 'pages/MovieDetails';
 
 export const App = () => {

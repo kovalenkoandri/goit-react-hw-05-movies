@@ -5,7 +5,7 @@ import {
   ListReviews,
   ItemReviews,
   TextReviews,
-} from 'components/Reviews.styled';
+} from 'components/Reviews/Reviews.styled';
 export const Reviews = () => {
   const [reviewed, setReviewed] = useState([]);
   const { movieId } = useParams();
