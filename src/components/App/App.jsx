@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { searchMovies } from 'components/services/api';
 import { getTrending } from 'components/services/api';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 import SharedLayout from 'components/SharedLayout';
 const Home = lazy(() => import('pages/Home'));
@@ -9,7 +9,7 @@ const Movies = lazy(() => import('pages/Movies'));
 const MovieDetails = lazy(() => import('pages/MovieDetails'));
 const Cast = lazy(() => import('components/Cast/Cast'));
 const Reviews = lazy(() => import('components/Reviews/Reviews'));
-const NotFound = lazy(() => import('pages/NotFound'));
+// const NotFound = lazy(() => import('pages/NotFound'));
 
 export const App = () => {
   const [images, setImages] = useState([]);
@@ -21,7 +21,6 @@ export const App = () => {
         const response = await searchMovies(input).then(responseHttp => {
           return responseHttp.data.results;
         });
-        setImages([]);
         setImages([...response]);
       } catch (error) {
         console.error(error);
@@ -32,7 +31,6 @@ export const App = () => {
         const response = await getTrending().then(responseHttp => {
           return responseHttp.data.results;
         });
-        setTrendingImages([]);
         setTrendingImages([...response]);
       } catch (error) {
         console.error(error);
@@ -80,7 +78,8 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route path="*" element={<NotFound />} />
+          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
     </>
