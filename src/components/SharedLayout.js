@@ -4,15 +4,15 @@ import { Suspense } from 'react';
 const SharedLayout = () => {
   return (
     <Container>
-      <Header>
-        <nav>
-          <Link to="/" end>
-            Home
-          </Link>
-          <Link to="/movies">Movies</Link>
-        </nav>
-      </Header>
       <Suspense fallback={<div>Loading...</div>}>
+        <Header>
+          <nav>
+            <Link to="/" end>
+              Home
+            </Link>
+            <Link to="/movies">Movies</Link>
+          </nav>
+        </Header>
         <Outlet />
       </Suspense>
     </Container>
