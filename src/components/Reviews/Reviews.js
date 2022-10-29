@@ -22,7 +22,6 @@ const Reviews = () => {
     };
     getMovieReviewsHttp(movieId);
   }, [movieId]);
-  console.log(reviewed);
   return (
     <section>
       <ListReviews>

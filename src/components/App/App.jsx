@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { searchMovies } from 'components/services/api';
 import { getTrending } from 'components/services/api';
 import { Route, Routes } from 'react-router-dom';
-import { Container, Header, Link } from 'components/App/App.styled';
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
+import SharedLayout from 'components/SharedLayout';
 const Home = lazy(() => import('pages/Home'));
 const Movies = lazy(() => import('pages/Movies'));
 const MovieDetails = lazy(() => import('pages/MovieDetails'));
@@ -51,19 +51,10 @@ export const App = () => {
 
   return (
     <>
-      <Container>
-        <Suspense fallback={<div>Loading...</div>}>
-        <Header>
-          <nav>
-            <Link to="/" end>
-              Home
-            </Link>
-            <Link to="/movies">Movies</Link>
-          </nav>
-        </Header>
-        <Routes>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
           <Route
-            path="/"
+            index
             element={
               <Home
                 {...{
@@ -73,7 +64,7 @@ export const App = () => {
             }
           />
           <Route
-            path="/movies"
+            path="movies"
             element={
               <Movies
                 {...{
@@ -85,14 +76,13 @@ export const App = () => {
               />
             }
           />
-          <Route path="/movies/:movieId" element={<MovieDetails />}>
-            <Route path="/movies/:movieId/cast" element={<Cast />} />
-            <Route path="/movies/:movieId/reviews" element={<Reviews />} />
+          <Route path="movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
           <Route path="*" element={<NotFound />} />
-        </Routes>
-        </Suspense>
-      </Container>
+        </Route>
+      </Routes>
     </>
   );
 };
