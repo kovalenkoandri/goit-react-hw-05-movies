@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { getMovieDetails } from 'components/services/api';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import {
@@ -74,7 +74,9 @@ const MovieDetails = () => {
           <Link to="reviews">Reviews</Link>
         </LiAdditional>
       </UlAdditional>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
