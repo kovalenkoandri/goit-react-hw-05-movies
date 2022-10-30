@@ -43,9 +43,14 @@ const MovieDetails = () => {
       ? genres.reduce((ac, { name }) => (ac += `${name} `), '')
       : 'no genres';
   const location = useLocation();
+  console.log(location);
   return (
     <>
-      <Link to={location.state?.from.pathname || '/'}>ᐸ go Back ᐸ</Link>
+      <Link
+        to={location.state?.from.pathname + location.state?.from.search || '/'}
+      >
+        ᐸ go Back ᐸ
+      </Link>
       <CardTemplate>
         <Img src={poster} alt={title} />
         <Ul>
@@ -68,10 +73,10 @@ const MovieDetails = () => {
       <UlAdditional>
         Additional information
         <LiAdditional>
-          <Link to="cast">Cast</Link>
+          <Link to="cast" state={{ from: location.state?.from }}>Cast</Link>
         </LiAdditional>
         <LiAdditional>
-          <Link to="reviews">Reviews</Link>
+          <Link to="reviews" state={{ from: location.state?.from }}>Reviews</Link>
         </LiAdditional>
       </UlAdditional>
       <Suspense fallback={<div>Loading...</div>}>

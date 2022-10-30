@@ -1,20 +1,29 @@
 import PropTypes from 'prop-types';
 import Home from 'pages/Home';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Input, Button } from './Movies.styled';
+import { useSearchParams } from 'react-router-dom';
 const Movies = ({ onSubmit, images, appSetInput, appSetImages }) => {
   const [input, setInput] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query');
+  console.log(query);
   const handleSubmit = event => {
     event.preventDefault();
     onSubmit(input);
   };
 
   const onChange = event => {
-    setInput(event.target.value);
     appSetInput(''); // clear old search rendered response
     appSetImages([]);
+    setInput(event.target.value);
+    event.target.value ? setSearchParams({ query: event.target.value }) : setSearchParams({});
+    
   };
-
+  useEffect(() => {
+    console.log(query);
+    query && setInput(query);
+}, [query]);
   return (
     <>
       <header>
