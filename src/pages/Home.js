@@ -8,7 +8,6 @@ const Home = ({ images, trendingImages }) => {
     idx) => renderImages.indexOf(el) === idx
   );
   const location = useLocation();
-  console.log(location);
   return (
     <>
       <ul>

@@ -43,7 +43,6 @@ const MovieDetails = () => {
       ? genres.reduce((ac, { name }) => (ac += `${name} `), '')
       : 'no genres';
   const location = useLocation();
-  console.log(location);
   return (
     <>
       <Link

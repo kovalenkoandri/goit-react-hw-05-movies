@@ -7,7 +7,6 @@ const Movies = ({ onSubmit, images, appSetInput, appSetImages }) => {
   const [input, setInput] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
-  console.log(query);
   const handleSubmit = event => {
     event.preventDefault();
     onSubmit(input);
@@ -21,7 +20,6 @@ const Movies = ({ onSubmit, images, appSetInput, appSetImages }) => {
     
   };
   useEffect(() => {
-    console.log(query);
     query && setInput(query);
 }, [query]);
   return (
