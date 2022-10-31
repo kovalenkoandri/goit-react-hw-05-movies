@@ -10,13 +10,16 @@ const Movies = ({ onSubmit, images, appSetInput, appSetImages }) => {
   const handleSubmit = event => {
     event.preventDefault();
     onSubmit(input);
+    console.log(event);
+    event.target.input.value ? setSearchParams({ query: event.target.input.value }) : setSearchParams({});
   };
 
   const onChange = event => {
     appSetInput(''); // clear old search rendered response
     appSetImages([]);
     setInput(event.target.value);
-    event.target.value ? setSearchParams({ query: event.target.value }) : setSearchParams({});
+    // event.target.value ? setSearchParams({ query: event.target.value }) : setSearchParams({});
+    // write url by input change
     
   };
   useEffect(() => {
